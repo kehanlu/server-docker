@@ -110,6 +110,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/root/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 pyenv activate lab
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

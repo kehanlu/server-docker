@@ -8,10 +8,12 @@ curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer 
 cp /init/.zshrc /root
 cp /init/.p10k.zsh /root
 
-
-pip install jupyterlab
+/root/.pyenv/versions/3.8.5/envs/lab/bin/python3.8 -m pip install --upgrade pip
+/root/.pyenv/versions/3.8.5/envs/lab/bin/python3.8 -m pip install jupyterlab
+mkdir /root/.jupyter
 echo "c.ServerApp.password_required = True\n\
-      c.ServerApp.ip = '0.0.0.0'\n\
-      c.ServerApp.open_browser = False\n\
-      c.ServerApp.notebook_dir = '/root'" > /root/.jupyter/jupyter_lab_config.py
-echo 'ServerApp": {"password": "sha1:61dfcf7ce7d1:35a8c56ad9c981cea8dce87ad5ee138932ba1b8c"}}' > /root/.jupyter/jupyter_server_config.json
+c.ServerApp.ip = '0.0.0.0'\n\
+c.ServerApp.open_browser = False\n\
+c.ServerApp.notebook_dir = '/root'" > /root/.jupyter/jupyter_lab_config.py
+
+python -m jupyter_server.auth password
