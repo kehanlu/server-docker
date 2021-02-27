@@ -1,6 +1,6 @@
 
 ```shell
-echo 'export DOCKER_HOME=/path/to/docker-home'
+echo '\nexport DOCKER_HOME=/path/to/docker-home' >> ~/.zshrc
 docker build -t lab .
 docker run --rm -v $PWD/init:/init $DOCKER_HOME:/root lab sh /init/init.sh
 ```
