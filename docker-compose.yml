@@ -3,7 +3,7 @@ services:
   jupyter:
     image: lab
     volumes: 
-      - $DOCKER_HOME:/root
+      - ./docker-home:/root
     ports: 
       - 10088:8888
     command: '/root/.pyenv/versions/lab/bin/jupyter lab --allow-root'
