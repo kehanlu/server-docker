@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  jupyter:
+    image: lab
+    volumes: 
+      - /home/hank/projects/nvidia-docker/docker-home:/root
+    ports: 
+      - 10088:8888
+    command: '/root/.pyenv/versions/lab/bin/jupyter lab --allow-root'
