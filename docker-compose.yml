@@ -1,9 +1,33 @@
-version: "3"
+version: "3.4"
 services:
   jupyter:
+    container_name: hank_server
     image: lab
+    volumes: 
+      - ./docker-home:/root
+    environment: 
+      - PATH=/root/.pyenv/versions/lab/bin:$PATH
+    ports: 
+      - 10088:8888
+    entrypoint: zsh -c 'jupyter lab --no-browser --allow-root'
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - capabilities: [gpu]
+            driver: nvidia
+  zsh:
+    image: lab
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
     volumes: 
       - ./docker-home:/root
     ports: 
       - 10088:8888
-    command: '/root/.pyenv/versions/lab/bin/jupyter lab --allow-root'
+    command: zsh
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - capabilities: [gpu]
+            driver: nvidia

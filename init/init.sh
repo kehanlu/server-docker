@@ -4,6 +4,7 @@ curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer 
 
 /root/.pyenv/bin/pyenv install 3.8.5
 /root/.pyenv/bin/pyenv virtualenv 3.8.5 lab
+/root/.pyenv/bin/pyenv global lab
 
 cp /init/.zshrc /root
 cp /init/.p10k.zsh /root

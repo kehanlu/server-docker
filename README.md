@@ -1,22 +1,17 @@
 
 ```shell
-echo '\nexport DOCKER_HOME=/path/to/docker-home' >> ~/.zshrc
 docker build -t lab .
-docker run -it --rm -v $PWD/init:/init -v $DOCKER_HOME:/root lab sh /init/init.sh
+docker run -it --rm -v ./init:/init -v ./docker-home:/root lab sh /init/init.sh
 ```
 
 ```shell
-docker run -it --rm -v $DOCKER_HOME:/root -p 10088:8888 lab zsh
+docker-compose run --rm -p 10088:8888 zsh
+
+docker-compose run -p 10088:8888 jupyter
 ```
 
 ```shell
-docker run -d --rm --name hank_server -v $DOCKER_HOME:/root -p 10088:8888 lab /root/.pyenv/versions/lab/bin/jupyter lab --allow-root 
-```
+docker-compose up -d jupyter
 
-```
 sudo docker exec -it hank_server zsh
-```
-
-```shell
-docker-compose up
 ```
