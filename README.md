@@ -1,22 +1,25 @@
+1. Install Docker & Docker-compose
+    https://docs.docker.com/engine/install/ubuntu/
 
-```shell
-mkdir -p ./docker-home
-```
+2. Install nvidia toolkit
+    https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#install-guide
 
-## `.env`
-```plaintext
-USER=hank
-PORT=8888
-HOME=./docker-home
-```
+
 
 ## Build and initial docker image
 ```shell
-
+mkdir -p ./docker-home
 export DOCKER_HOME=./docker-home
 
 docker build -t lab .
 docker run -it --rm -v ./init:/init -v $DOCKER_HOME:/root lab sh /init/init.sh
+```
+
+## `.env` file
+```plaintext
+USER=hank
+PORT=8888
+HOME=./docker-home
 ```
 
 ## Test Run
