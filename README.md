@@ -1,6 +1,6 @@
 
 ```shell
-mkdir -p docker-home
+mkdir -p ./docker-home
 ```
 
 ## `.env`
@@ -12,13 +12,16 @@ HOME=./docker-home
 
 ## Build and initial docker image
 ```shell
+
+export DOCKER_HOME=./docker-home
+
 docker build -t lab .
 docker run -it --rm -v ./init:/init -v $DOCKER_HOME:/root lab sh /init/init.sh
 ```
 
 ## Test Run
 ```shell
-docker-compose run --rm -p 8888:8888 zsh
+docker-compose run -p 8888:8888 zsh
 docker-compose run -p 8888:8888 jupyter
 ```
 
