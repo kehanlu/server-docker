@@ -1,10 +1,11 @@
-FROM nvidia/cuda:11.0-base
-WORKDIR /root
+FROM nvidia/cuda:10.2-devel-ubuntu18.04
+WORKDIR /root/lab
 
 ENV SHELL=/bin/zsh
 ENV TZ=Asia/Taipei
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update
+RUN apt-get install -y apt-utils
 # install some useful tools
 RUN apt-get install -y git vim wget curl zsh tmux zip htop
 

@@ -1,30 +1,17 @@
 version: "3.4"
 services:
   jupyter:
-    container_name: ${USER}_server
+    hostname: '${DOCKER_USER}-docker'
+    container_name: ${DOCKER_USER}_server
     image: lab
     volumes: 
-      - ./docker-home:/root
+      - ${DOCKER_HOME}:/root
+    working_dir: /root/lab
     environment: 
       - PATH=/root/.pyenv/versions/lab/bin:$PATH
     ports: 
       - ${PORT}:8888
     entrypoint: zsh -c 'jupyter lab --no-browser --allow-root'
-    deploy:
-      resources:
-        reservations:
-          devices:
-          - capabilities: [gpu]
-            driver: nvidia
-  zsh:
-    image: lab
-    stdin_open: true # docker run -i
-    tty: true        # docker run -t
-    volumes: 
-      - ./docker-home:/root
-    ports: 
-      - ${PORT}:8888
-    command: zsh
     deploy:
       resources:
         reservations:
