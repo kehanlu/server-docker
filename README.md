@@ -8,18 +8,20 @@
 
 ## Build and initial docker image
 ```shell
-mkdir -p ./docker-home
-export DOCKER_HOME=./docker-home
+export DOCKER_HOME=$PWD/docker-home
+mkdir -p $DOCKER_HOME
 
-docker build -t lab .
-docker run -it --rm -v ./init:/init -v $DOCKER_HOME:/root lab sh /init/init.sh
+docker build -t lab - < Dockerfile
+
+# You have to enter Jupyter lab password at the end
+docker run -it --rm -v $PWD/init:/init -v $DOCKER_HOME:/root lab sh /init/init.sh
 ```
 
-## `.env` file
+## Create `.env` file
 ```plaintext
-USER=hank
+DOCKER_USER=hank
 PORT=8888
-HOME=./docker-home
+DOCKER_HOME=./docker-home
 ```
 
 ## Test Run
@@ -31,7 +33,7 @@ docker-compose run -p 8888:8888 jupyter
 ## RUN!
 ```shell
 # run jupyter server
-docker-compose up -d jupyter
+docker-compose up -d
 
 # run shell in container
 sudo docker exec -it ${USER}_server zsh
