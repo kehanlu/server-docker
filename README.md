@@ -6,7 +6,7 @@
 
 
 
-## Build and initial docker image
+## Build and initialize docker image
 ```shell
 export DOCKER_HOME=$PWD/docker-home
 mkdir -p $DOCKER_HOME
@@ -18,8 +18,12 @@ docker run -it --rm -v $PWD/init:/init -v $DOCKER_HOME:/root lab sh /init/init.s
 ```
 
 ## Create `.env` file
+
+- Container name will be `${DOCKER_USER}_server`
+- Host name will be `${DOCKER_USER}-docker`
+
 ```plaintext
-DOCKER_USER=hank
+DOCKER_USER=your_username
 PORT=8888
 DOCKER_HOME=./docker-home
 ```
