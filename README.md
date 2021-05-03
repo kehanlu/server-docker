@@ -11,7 +11,7 @@ git clone https://github.com/kehanlu/server-docker
 cd server-docker
 
 docker build -t lab .
-docker run -v $(pwd)/docker-home:/root sh /src/init.sh
+docker run -v $(pwd)/docker-home:/root lab sh /src/init.sh
 
 # Done!
 ```

@@ -9,7 +9,7 @@ services:
     working_dir: /root
     ports:
       - ${JUPYTER_PORT}:8888
-    command: zsh -c '/root/.pyenv/shims/jupyter lab --allow-root'
+    command: zsh -c '/root/.pyenv/versions/lab/bin/jupyter lab --allow-root'
     deploy:
       resources:
         reservations:

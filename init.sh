@@ -15,7 +15,6 @@ echo -e 'export PATH="/root/.pyenv/bin:$PATH"\neval "$(pyenv init -)"\neval "$(p
 /root/.pyenv/versions/3.8.5/envs/lab/bin/python -m pip install jupyterlab
 
 mkdir -p /root/.jupyter
-echo "c.ServerApp.password_required = True\n\
-c.ServerApp.ip = '0.0.0.0'\n\
+echo "c.ServerApp.ip = '0.0.0.0'\n\
 c.ServerApp.open_browser = False\n\
 c.ServerApp.notebook_dir = '/root'" > /root/.jupyter/jupyter_lab_config.py
