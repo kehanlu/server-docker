@@ -8,7 +8,7 @@ curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer 
 /root/.pyenv/bin/pyenv virtualenv 3.8.5 lab
 /root/.pyenv/bin/pyenv global lab
 
-echo -e 'export PATH="/root/.pyenv/bin:$PATH"\neval "$(pyenv init -)"\neval "$(pyenv virtualenv-init -)"\nexport PYENV_VIRTUALENV_DISABLE_PROMPT=1' >> .zshrc
+echo 'export PATH="/root/.pyenv/bin:$PATH"\neval "$(pyenv init -)"\neval "$(pyenv virtualenv-init -)"\nexport PYENV_VIRTUALENV_DISABLE_PROMPT=1' >> .zshrc
 
 # install jupyter
 /root/.pyenv/versions/3.8.5/envs/lab/bin/python -m pip install --upgrade pip
