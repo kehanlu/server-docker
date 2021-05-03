@@ -1,44 +1,39 @@
-1. Install Docker & Docker-compose
-    https://docs.docker.com/engine/install/ubuntu/
+## Installation
 
-2. Install nvidia toolkit
-    https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#install-guide
+1. [Install Docker & Docker-compose](https://docs.docker.com/engine/install/ubuntu/)
+2. [Install nvidia toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#install-guide)
 
+## Build Image
 
-
-## Build and initialize docker image
 ```shell
-export DOCKER_HOME=$PWD/docker-home
-mkdir -p $DOCKER_HOME
+git clone https://github.com/kehanlu/server-docker
 
-docker build -t lab - < Dockerfile
+cd server-docker
 
-# You have to enter Jupyter lab password at the end
-docker run -it --rm -v $PWD/init:/init -v $DOCKER_HOME:/root lab sh /init/init.sh
+docker build -t lab .
+docker run -v $(pwd)/docker-home:/root sh /src/init.sh
+
+# Done!
 ```
 
-## Create `.env` file
+## Run Container
 
-- Container name will be `${DOCKER_USER}_server`
-- Host name will be `${DOCKER_USER}-docker`
+Edit `.env`
 
-```plaintext
-DOCKER_USER=your_username
-PORT=8888
+```shell
+DOCKER_USER=username
+JUPYTER_PORT=8990
 DOCKER_HOME=./docker-home
 ```
 
-## Test Run
+start Jupyter server.
+
 ```shell
-docker-compose run -p 8888:8888 zsh
-docker-compose run -p 8888:8888 jupyter
+docker-compose up -d
 ```
 
-## RUN!
-```shell
-# run jupyter server
-docker-compose up -d
+Attach a shell to container.
 
-# run shell in container
-sudo docker exec -it ${USER}_server zsh
+```shell
+docker exec -it username_server zsh
 ```
