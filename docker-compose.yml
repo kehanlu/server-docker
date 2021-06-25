@@ -1,15 +1,16 @@
 version: "3.4"
 services:
   jupyter:
-    hostname: "${DOCKER_USER}-docker"
-    container_name: ${DOCKER_USER}_server
+    hostname: "${USER}-lab"
+    container_name: ${USER}_lab
     image: lab
     volumes:
-      - ${DOCKER_HOME}:/root
-    working_dir: /root
+      - ${PWD}/docker-home:/home/${USER}
+      # source_folder:container_folder
+    working_dir: /home/${USER}
     ports:
       - ${JUPYTER_PORT}:8888
-    command: zsh -c '/root/.pyenv/versions/lab/bin/jupyter lab --allow-root'
+    command: zsh -c '/home/${USER}/.pyenv/versions/lab/bin/jupyter lab --allow-root'
     deploy:
       resources:
         reservations:
