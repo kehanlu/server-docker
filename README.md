@@ -1,3 +1,5 @@
+[Design detail](https://blog.hanklu.tw/post/2021/docker-for-deep-learning/)
+
 ## Introduction
 
 A docker image including Ubuntu, CUDA, Python, Jupyter Lab for basic deep learning usage based on [nvidia/cuda](https://hub.docker.com/r/nvidia/cuda). It helps you starting a new system within a minute. Isolating your system from others in same server.
