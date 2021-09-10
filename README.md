@@ -5,8 +5,8 @@
 A docker image including Ubuntu, CUDA, Python, Jupyter Lab for basic deep learning usage based on [nvidia/cuda](https://hub.docker.com/r/nvidia/cuda). It helps you starting a new system within a minute. Isolating your system from others in same server.
 
 - **Jupyter Lab**: access via `http://public_IP:port`
-- **ssh**： use `docker exec` to execute an iteractive shell in a running container.
-- **Vscode remote container**
+- **ssh**： connet to container via ssh
+- **Vscode remote container**(based on ssh)
 
 ![](https://blog.hanklu.tw/post/cuda-docker-for-deep-learning/2021-06-26-01-11-45.png)
 
