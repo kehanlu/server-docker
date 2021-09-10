@@ -3,14 +3,18 @@ services:
   jupyter:
     hostname: "${USER}-lab"
     container_name: ${USER}_lab
-    image: lab
+    image: ${USER}-lab-image
+    user: ${USER}
     volumes:
       - ${PWD}/docker-home:/home/${USER}
       # source_folder:container_folder
     working_dir: /home/${USER}
+    environment:
+      - PATH=/home/${USER}/.pyenv:$PATH
     ports:
       - ${JUPYTER_PORT}:8888
-    command: zsh -c '/home/${USER}/.pyenv/versions/lab/bin/jupyter lab --allow-root'
+      - ${SSH_PORT}:22
+    command : bash -c 'sudo service ssh start && /home/${USER}/.pyenv/versions/${ENV_NAME}/bin/jupyter-lab'
     deploy:
       resources:
         reservations:
