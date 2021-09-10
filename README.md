@@ -16,15 +16,15 @@ A docker image including Ubuntu, CUDA, Python, Jupyter Lab for basic deep learni
 
 1. Install [docker](https://docs.docker.com/engine/install/ubuntu/)
 2. Install [docker-compose](https://docs.docker.com/compose/install/)
-3. Install nvidia-driver
-4. Install [nvidia toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#install-guide)
-
-### Build image
+3. Install [NVIDIA driver](https://www.nvidia.com/Download/index.aspx)
+4. Install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#install-guide)
 
 ```shell
 git clone https://github.com/kehanlu/server-docker
 cd server-docker
 ```
+
+### Build image
 
 ```shell
 docker build \
@@ -47,7 +47,7 @@ docker run -v $(pwd)/docker-home:/home/$USER ${USER}-lab-image sh /src/init.sh
 
 ### Change password
 
-The default password is set to `password` when building docker image. For security reason, setting up password in Dockerfile is not recommended. Please change the password before you start your project.
+The default password is set to `password` when building docker image. For security reason, setting up password in Dockerfile is not recommended. Please change the password before you start to anything.
 
 ```shell
 # Run the container
@@ -65,7 +65,7 @@ docker-compose down
 
 ## Usage
 
-**NOTE:** In `.env` you can change the external port and virtualenv to start jupyter.
+**NOTE:** In `.env` you can change the external port and virtualenv to start jupyter(if you manually install other version of python).
 
 ```
 JUPYTER_PORT=8080
